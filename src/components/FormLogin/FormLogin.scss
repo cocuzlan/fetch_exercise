@@ -1,0 +1,63 @@
+@import "../../../public/style/scss_general.scss";
+
+/* Class for button */
+button {
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 1rem 6rem;
+  border-radius: 2.5rem;
+  font-size: $fontsize-xxl;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.form-login {
+  margin: 2rem 3rem;
+
+  /* Class for title */
+  &_title {
+    text-align: center;
+    color: $color-blue-primary-dark;
+    font-size: $fontsize-hero;
+    text-transform: uppercase;
+    margin: 0 0 3rem 0;
+  }
+
+  /*  */
+  &_form {
+    width: 100%;
+
+    /* For button login */ 
+    button {
+      color: $color-white;
+      background-color: $color-blue-primary-dark;
+      border: 0.2rem solid $color-blue-primary-dark;
+      width: 70%;
+    }
+
+    /* Creater a row */
+    &_row {
+      display: grid;
+      grid-template-columns: repeat(1, 100%);
+    }
+
+    &_input {
+      width: 100%;
+    }
+
+    &_button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &_error {
+    margin: 1rem 0;
+    width: 100%;
+    color: $color-danger;
+    font-size: $fontsize-xxl;
+    font-weight: bold;
+    text-align: center;
+  }
+}

@@ -1,0 +1,83 @@
+@import "../../../public/style/scss_general.scss";
+
+/* General class */
+.input_string {
+  margin: 1rem;
+  display: inline-block;
+
+  /* For icon requieren "*" */
+  &_required {
+    color: $color-danger;
+    font-weight: bold;
+  }
+
+  /* Input is valid */
+  &:has(:valid) {
+    label {
+      color: $color-success;
+    }
+  }
+
+  /* Input is NOT valid */
+  &:has(:invalid:not(:placeholder-shown):not(input[type='checkbox'])) {
+    label {
+      color: $color-danger;
+    }
+  }
+  
+  /* For label */
+  label {
+    margin: 0 0 0.5rem 0.5rem;
+    display: block;
+    color: $color-navy-blue;
+    font-size: $fontsize-xxl;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  /* For input in general */
+  input {
+    width: 85%;
+    border-radius: 0.5rem;
+    border: 0.2rem solid $color-navy-blue;
+    padding: 0.8rem 1rem;
+    outline: none;
+    font-size: $fontsize-xxl;
+
+    /* When focus */
+    &:focus {
+      border: 0.2rem solid $color-navy-blue;
+    }
+
+    /* When complete all rules only input */
+    &:valid {
+      border: 0.2rem solid $color-success;
+    }
+    /* When NOT complete all rules only input */
+    &:invalid:not(:placeholder-shown) {
+      border: 0.2rem solid $color-danger;
+    }
+  }
+
+  /* When NOT complete all rules */
+  &:has(.input_string_error) {
+    input {
+      border: 0.2rem solid $color-danger;
+    }
+
+    /* For label */
+    label {
+      color: $color-danger;
+    }
+  }
+
+  /* For error message */
+  &_error {
+    margin: 1rem 0;
+    width: 85%;
+    color: $color-danger;
+    font-size: $fontsize-xxl;
+    font-weight: bold;
+    text-align: center;
+  }
+}

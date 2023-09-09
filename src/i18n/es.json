@@ -1,0 +1,33 @@
+{
+  "general": {
+    "lorem_title": "Lorem",
+    "lorem": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum hic molestias saepe quam libero corporis doloremque, alias laudantium autem amet similique ut. Aliquam magnam soluta veritatis dolore perspiciatis mollitia doloribus.",
+    "error": "Error",
+    "success": "Correcto"
+  },
+  "login": {
+    "es": "Español",
+    "en": "Ingles",
+    "login_title": "Bienvenido",
+    "button": "Iniciar Sesión",
+    "form": {
+      "name_label": "Nombre",
+      "email_label": "Correo Electrónico",
+      "error": "Error en el request"
+    }
+  },
+  "components": {
+    "modal": {
+      "title": "Default",
+      "close": "Cerrar",
+      "accept": "Aceptar"
+    },
+    "string": {
+      "label": "Label",
+      "placeholder": "Placeholder",
+      "msg_required" : "Campo Requerido",
+      "msg_pattern": "No cumple el formato",
+      "msg_lenght": "El campo tiene más o menos caracteres"
+    }
+  }
+}

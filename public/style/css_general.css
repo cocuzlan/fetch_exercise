@@ -1,0 +1,13 @@
+/* General CSS */
+
+/* Genera class for proyect */
+html {
+  /* 1rem = 10px */
+  font-size: 62.5%;
+}
+
+/* Define to font and */
+body {
+  font-family: Arial;
+  margin: 0;
+}

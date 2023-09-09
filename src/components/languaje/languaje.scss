@@ -1,0 +1,21 @@
+@import "../../../public/style/scss_general.scss";
+
+.languaje {
+  border: none;
+  
+  &_select {
+    cursor: pointer;
+    border: none;
+    outline: 0rem;
+    background-color: $color-white;
+    appearance: none;
+    color: $color-blue;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  &_option {
+    text-transform: uppercase;
+    background-color: $color-white;
+  }
+}
