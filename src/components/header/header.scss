@@ -1,0 +1,49 @@
+@import "../../../public/style/scss_general.scss";
+
+/* General class */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  
+  /* For content */
+  &_content {
+    width: auto;
+    height: 3rem;
+    background-color: $color-white;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  
+    @media (max-width: 492px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    // For section languaje
+    &_languaje {
+      position: absolute;
+      bottom: 1rem;
+      left: 2rem;
+    }
+
+    &_logout {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 2rem;
+      
+      button {
+        text-transform: uppercase;
+        cursor: pointer;
+        padding: 0.3rem;
+        border-radius: 2.5rem;
+        font-size: $fontsize-s;
+        margin: 1rem 0;
+        width: 20%;
+        color: $color-white;
+        background-color: $color-blue-primary-dark;
+        border: 0.2rem solid $color-blue-primary-dark;
+      }
+    }
+  }
+}

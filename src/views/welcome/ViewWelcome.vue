@@ -1,6 +1,6 @@
 <template>
   <div>
-    welcome
+    <component-header />
   </div>
 </template>
 

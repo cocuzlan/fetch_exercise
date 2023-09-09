@@ -13,7 +13,8 @@ const store = new Vuex.Store({
   // Define a variables
   state: {
     api_url: 'https://frontend-take-home-service.fetch.com',
-    error_field: {}
+    error_field: {},
+    dog_breeds: []
   },
   getters: {
     /**
@@ -40,10 +41,18 @@ const store = new Vuex.Store({
     /**
      * @description Get a URL for API
      * @param { Object } state Variables store
-     * @returns { Sring } URL by API
+     * @returns { String } URL by API
      */
     getAPI(state) {
       return state.api_url
+    },
+    /**
+     * @description Get a dog breeds
+     * @param { Object } state Variables store
+     * @returns { Object } Array of dogs
+     */
+    getDogBreeds(state) {
+      return state.dog_breeds
     },
   },
   mutations: {
@@ -61,6 +70,13 @@ const store = new Vuex.Store({
      */
     setCleanErrorField(state) {
       state.error_field = {}
+    },
+    /**
+     * @description Set breeds dogs
+     * @param { Object } state  Variables in state
+     */
+    setDogBreed(state, payload) {
+      state.dog_breeds = [...payload]
     },
   },
   actions: {},

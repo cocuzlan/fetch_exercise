@@ -16,6 +16,9 @@
       "error": "Error in request"
     }
   },
+  "welcome": {
+    "logout": "Logout"
+  },
   "components": {
     "modal": {
       "title": "Default",

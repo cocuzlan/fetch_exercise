@@ -1,5 +1,9 @@
+import ComponentHeader from '../../components/header/ComponentHeader.vue'
+
 export default {
-  components: {},
+  components: {
+    ComponentHeader
+  },
   mixins: [],
   directives: {},
   props: {},

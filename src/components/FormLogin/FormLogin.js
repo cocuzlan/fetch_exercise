@@ -1,7 +1,7 @@
 import ComponentString from "../../components/string/ComponentString"
 import { getRegexEmail } from "../../regex/regex";
 import { mapMutations, mapGetters } from 'vuex'
-import { getToken } from "../../api_service/api_service"
+import { getToken, getDogs } from "../../api_service/api_service"
 
 export default {
   components: {
@@ -18,12 +18,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['getErrorField', 'getData']),
+    ...mapGetters(['getErrorField', 'getData', 'getDogBreeds']),
   },
   watch: {},
   filters: {},
   methods: {
-    ...mapMutations(['setCleanErrorField']),
+    ...mapMutations(['setCleanErrorField', 'setDogBreed']),
     /**
      * @description Methods to do login
      */
@@ -43,6 +43,10 @@ export default {
       if (!result) {
         this.error = this.$i18n.t('login.form.error')
         return
+      }
+      if (!this.getDogBreeds.length) {
+        const dogs = await getDogs()
+        this.setDogBreed(dogs)
       }
       // If is OK move to welcome
       this.$router.push({ name: 'welcome' })

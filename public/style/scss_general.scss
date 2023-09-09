@@ -34,3 +34,13 @@ $fontsize-display-m: 3.2rem;
 $fontsize-hero: 3.4rem;
 $fontsize-4rem: 4rem;
 $fontsize-hero-xl: 6rem;
+
+
+.error {
+  margin: 1rem 0;
+  width: 100%;
+  color: $color-danger;
+  font-size: $fontsize-xxl;
+  font-weight: bold;
+  text-align: center;
+}

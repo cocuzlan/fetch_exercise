@@ -7,6 +7,7 @@ import { store } from '../store/store'
  */
 const configuration = {
   baseURL: store.getters.getAPI,
+  withCredentials: true
 }
 
 /**
@@ -23,5 +24,35 @@ export const getToken = async body => {
     return true
   } catch (error) {
     return false
+  }
+}
+
+/**
+ * @description Logout
+ * @returns { Boolean } Returns if call to WS is OK!
+ */
+export const getLogout = async () => {
+  try {
+    configuration.url = `/auth/logout`
+    configuration.method = 'post'
+    await axios(configuration)
+    return true
+  } catch (error) {
+    return false
+  }
+}
+
+/**
+ * @description Get Dogs
+ * @returns { Boolean } Returns if call to WS is OK!
+ */
+export const getDogs = async () => {
+  try {
+    configuration.url = `/dogs/breeds`
+    configuration.method = 'get'
+    const { data } = await axios(configuration)
+    return data
+  } catch (error) {
+    return []
   }
 }
