@@ -17,7 +17,9 @@
     }
   },
   "welcome": {
-    "logout": "Salir"
+    "logout": "Salir",
+    "select_name": "Raza de perro",
+    "search": "Buscar"
   },
   "components": {
     "modal": {

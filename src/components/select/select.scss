@@ -1,0 +1,17 @@
+@import "../../../public/style/scss_general.scss";
+/* General class */
+.input_select {
+
+  margin: 1rem;
+  display: inline-block;
+
+  /* For label */
+  label {
+    margin: 0 0 0.5rem 0.5rem;
+    display: block;
+    color: $color-navy-blue;
+    font-size: $fontsize-xxl;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}

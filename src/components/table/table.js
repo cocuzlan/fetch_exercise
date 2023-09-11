@@ -1,21 +1,24 @@
-import ComponentHeader from '../../components/header/ComponentHeader.vue'
-import FormSearch from "@/components/FormSearch/FormSearch.vue";
-
 export default {
-  components: {
-    ComponentHeader,
-    FormSearch
-  },
+  components: {},
   mixins: [],
   directives: {},
-  props: {},
+  props: {
+    data: {
+      type: Array,
+      default: () => []
+    }
+  },
   data: function() {
     return {};
   },
   computed: {},
   watch: {},
   filters: {},
-  methods: {},
+  methods: {
+    transformTH(val) {
+      return val.replace('_', ' ')
+    }
+  },
   beforeCreate: function() {},
   created: function() {},
   beforeMount: function() {},

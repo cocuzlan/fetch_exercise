@@ -1,6 +1,9 @@
 <template>
   <div>
     <component-header />
+    <div>
+      <form-search />
+    </div>
   </div>
 </template>
 

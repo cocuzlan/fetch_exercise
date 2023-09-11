@@ -17,7 +17,9 @@
     }
   },
   "welcome": {
-    "logout": "Logout"
+    "logout": "Logout",
+    "select_name": "Dog Breeds",
+    "search": "Search"
   },
   "components": {
     "modal": {
