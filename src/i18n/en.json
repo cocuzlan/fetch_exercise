@@ -22,17 +22,21 @@
     "search": "Search"
   },
   "components": {
-    "modal": {
-      "title": "Default",
-      "close": "Close",
-      "accept": "Accept"
-    },
     "string": {
       "label": "Label",
       "placeholder": "Placeholder",
       "msg_required" : "Required field",
       "msg_pattern": "Does not meet the format",
       "msg_lenght": "The field has more or less characters"
+    },
+    "table": {
+      "header": {
+        "img": "Image",
+        "name": "Name",
+        "age": "Age",
+        "breed": "Breed",
+        "location": "Location"
+      }
     }
   }
 }

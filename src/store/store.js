@@ -5,6 +5,7 @@
 // Add libraries
 import Vue from "vue";
 import Vuex from "vuex";
+import { router } from './../router/router'
 
 Vue.use(Vuex);
 
@@ -14,7 +15,9 @@ const store = new Vuex.Store({
   state: {
     api_url: 'https://frontend-take-home-service.fetch.com',
     error_field: {},
-    dog_breeds: []
+    dog_breeds: [],
+    zipCodes: [],
+    dogsData: []
   },
   getters: {
     /**
@@ -54,6 +57,22 @@ const store = new Vuex.Store({
     getDogBreeds(state) {
       return state.dog_breeds
     },
+    /**
+     * @description Get a zip codes
+     * @param { Object } state Variables store
+     * @returns { Object } Array of zip codes
+     */
+    getZipCodes(state) {
+      return state.zipCodes
+    },
+    /**
+     * @description Get a data
+     * @param { Object } state Variables store
+     * @returns { Object } Array of data
+     */
+    getFullData(state) {
+      return state.dogsData
+    },
   },
   mutations: {
     /**
@@ -77,6 +96,41 @@ const store = new Vuex.Store({
      */
     setDogBreed(state, payload) {
       state.dog_breeds = [...payload]
+    },
+    /**
+     * @description Set zip codes from search
+     * @param { Object } state  Variables in state
+     */
+    setZipCodes(state, payload) {
+      state.zipCodes = payload.map(({ zip_code }) => (
+        zip_code
+      ))
+    },
+    /**
+     * @description Set a data full from every dog
+     * @param { Object } state  Variables in state
+     */
+    setFullData(state, payload) {
+      state.dogsData = payload.data.map(({
+        img,
+        name,
+        age,
+        breed,
+        zip_code
+      }) => ({
+        img,
+        name,
+        age,
+        breed,
+        location: payload.locations.find(el => el.zip_code === zip_code)
+      }))
+    },
+    /**
+     * @description Set a for logout
+     * @param { Object } state  Variables in state
+     */
+    setLogout() {
+      router.push({ name: 'login' }).catch(() => {})
     },
   },
   actions: {},

@@ -27,6 +27,10 @@ export default {
     async getFormValues() {
       this.data_dogs.length = 0
       if (!this.dogs_breed.length) {
+        this.$refs['component_select'].error_msg = 'components.string.components'
+        setTimeout(() => {
+          this.$refs['component_select'].error_msg = ''
+        }, 3000)
         return
       }
       const params = {
@@ -35,6 +39,7 @@ export default {
       const result = await getIdsDogs(params)
       if (!result) {
         this.error = this.$i18n.t('login.form.error')
+        return
       }
       this.data_dogs = [...result]
     }

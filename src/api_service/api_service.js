@@ -46,7 +46,7 @@ export const getLogout = async () => {
 
 /**
  * @description Get Dogs
- * @returns { Boolean } Returns if call to WS is OK!
+ * @returns { Object } Returns All dogs breed
  */
 export const getDogs = async () => {
   try {
@@ -61,7 +61,7 @@ export const getDogs = async () => {
 
 /**
  * @description Get Ids Dogs
- * @returns { Boolean } Returns if call to WS is OK!
+ * @returns { Boolean } Returns data for table or false!
  */
 export const getIdsDogs = async (payload) => {
   try {
@@ -80,7 +80,7 @@ export const getIdsDogs = async (payload) => {
 
 /**
  * @description Get Dogs
- * @returns { Boolean } Returns if call to WS is OK!
+ * @returns { Object | Boolean } Returns a data with dogs or false
  */
 export const getDogsSearch = async (payload) => {
   try {
@@ -88,8 +88,40 @@ export const getDogsSearch = async (payload) => {
     configuration.method = 'post'
     configuration.data = payload
     const { data } = await axios(configuration)
-    return data
+    store.commit('setZipCodes', data)
+    const locations = await getLocations()
+    store.commit('setFullData', {
+      data, locations
+    })
+    return store.getters.getFullData
   } catch (error) {
     return false
+  }
+}
+
+/**
+ * @description Get locations
+ * @returns { Object | Boolean } Returns a data with dogs or false
+ */
+export const getLocations = async () => {
+  try {
+    configuration.url = `/locations`
+    configuration.method = 'post'
+    configuration.data = store.getters.getZipCodes
+    const { data } = await axios(configuration)
+    return data
+  } catch (error) {
+    getError(error.response)
+    return false
+  }
+}
+
+/**
+ * @description Set in general HTTP error status
+ * @param { Object } error WS error
+ */
+const getError = (error) => {
+  if (error.status == 401) {
+    store.commit('logout')
   }
 }

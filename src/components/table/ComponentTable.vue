@@ -6,12 +6,14 @@
         <template v-if="data.length">
           <tr>
             <th v-for="(value, key) in data[0]" :key="`th-${key}`">
-              {{ transformTH(key) }}
+              {{ $t(`components.table.header.${key}`) }}
             </th>
           </tr>
           <tr v-for="(val, i) in data" :key="`tr-${i}`">
             <td v-for="(value, key) in val" :key="`td-${key}`">
-              {{value}}
+              <slot :name="key" v-bind="val">
+                {{value}}
+              </slot>
             </td>
           </tr>
         </template>

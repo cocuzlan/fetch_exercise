@@ -22,17 +22,21 @@
     "search": "Buscar"
   },
   "components": {
-    "modal": {
-      "title": "Default",
-      "close": "Cerrar",
-      "accept": "Aceptar"
-    },
     "string": {
       "label": "Label",
       "placeholder": "Placeholder",
       "msg_required" : "Campo Requerido",
       "msg_pattern": "No cumple el formato",
       "msg_lenght": "El campo tiene más o menos caracteres"
+    },
+    "table": {
+      "header": {
+        "img": "Imagen",
+        "name": "Nombre",
+        "age": "Edad",
+        "breed": "Raza",
+        "location": "Ubicación"
+      }
     }
   }
 }

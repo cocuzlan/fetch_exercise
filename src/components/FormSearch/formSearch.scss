@@ -18,4 +18,14 @@
       border: 0.2rem solid $color-blue-primary-dark;
     }
   }
+
+  &_table {
+    padding: 3rem;
+
+    &_img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
