@@ -1,31 +1,49 @@
 @import "../../../public/style/scss_general.scss";
 
 .form-search {
+
+  button {
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.5rem 2rem;
+    border-radius: 2.5rem;
+    font-size: $fontsize-xs;
+    margin: 1.5rem 0;
+    color: $color-white;
+    background-color: $color-blue-primary-dark;
+    border: 0.2rem solid $color-blue-primary-dark;
+  }
+
+  &_form {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+  }
+
   &_button {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    button {
-      text-transform: uppercase;
-      cursor: pointer;
-      padding: 0.5rem 2rem;
-      border-radius: 2.5rem;
-      font-size: $fontsize-xs;
-      margin: 1.5rem 0;
-      color: $color-white;
-      background-color: $color-blue-primary-dark;
-      border: 0.2rem solid $color-blue-primary-dark;
-    }
   }
 
   &_table {
     padding: 3rem;
 
+    button {
+      width: 100%;
+      background-color: $color-success;
+    }
+
     &_img {
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    &_adoption {
+      :deep(input[type="checkbox"]) {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
     }
   }
 }

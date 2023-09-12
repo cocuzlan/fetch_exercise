@@ -19,10 +19,11 @@ const configuration = {
  */
 export const getToken = async body => {
   try {
-    configuration.url = `/auth/login`
-    configuration.data = body
-    configuration.method = 'post'
-    await axios(configuration)
+    const conf = {...configuration}
+    conf.url = `/auth/login`
+    conf.data = body
+    conf.method = 'post'
+    await axios(conf)
     return true
   } catch (error) {
     return false
@@ -35,11 +36,13 @@ export const getToken = async body => {
  */
 export const getLogout = async () => {
   try {
-    configuration.url = `/auth/logout`
-    configuration.method = 'post'
-    await axios(configuration)
+    const conf = {...configuration}
+    conf.url = `/auth/logout`
+    conf.method = 'post'
+    await axios(conf)
     return true
   } catch (error) {
+    getError(error?.response)
     return false
   }
 }
@@ -50,44 +53,51 @@ export const getLogout = async () => {
  */
 export const getDogs = async () => {
   try {
-    configuration.url = `/dogs/breeds`
-    configuration.method = 'get'
-    const { data } = await axios(configuration)
+    const conf = {...configuration}
+    conf.url = `/dogs/breeds`
+    conf.method = 'get'
+    const { data } = await axios(conf)
     return data
   } catch (error) {
+    getError(error?.response)
     return []
   }
 }
 
 /**
  * @description Get Ids Dogs
+ * @param { Object } payload Object for set a params
  * @returns { Boolean } Returns data for table or false!
  */
 export const getIdsDogs = async (payload) => {
   try {
-    configuration.url = `/dogs/search`
-    configuration.method = 'get'
-    configuration.params = payload
-    configuration.paramsSerializer = params => {
+    const conf = {...configuration}
+    conf.url = `/dogs/search`
+    conf.method = 'get'
+    conf.params = payload
+    conf.paramsSerializer = params => {
       return qs.stringify(params)
     }
-    const { data: { resultIds } } = await axios(configuration)
+    const { data: { resultIds } } = await axios(conf)
     return await getDogsSearch(resultIds)
   } catch (error) {
+    getError(error?.response)
     return false
   }
 }
 
 /**
  * @description Get Dogs
+ * @param { Object } payload Array of id of dogs
  * @returns { Object | Boolean } Returns a data with dogs or false
  */
 export const getDogsSearch = async (payload) => {
   try {
-    configuration.url = `/dogs`
-    configuration.method = 'post'
-    configuration.data = payload
-    const { data } = await axios(configuration)
+    const conf = {...configuration}
+    conf.url = `/dogs`
+    conf.method = 'post'
+    conf.data = payload
+    const { data } = await axios(conf)
     store.commit('setZipCodes', data)
     const locations = await getLocations()
     store.commit('setFullData', {
@@ -95,6 +105,7 @@ export const getDogsSearch = async (payload) => {
     })
     return store.getters.getFullData
   } catch (error) {
+    getError(error?.response)
     return false
   }
 }
@@ -105,13 +116,33 @@ export const getDogsSearch = async (payload) => {
  */
 export const getLocations = async () => {
   try {
-    configuration.url = `/locations`
-    configuration.method = 'post'
-    configuration.data = store.getters.getZipCodes
-    const { data } = await axios(configuration)
+    const conf = {...configuration}
+    conf.url = `/locations`
+    conf.method = 'post'
+    conf.data = store.getters.getZipCodes
+    const { data } = await axios(conf)
     return data
   } catch (error) {
-    getError(error.response)
+    getError(error?.response)
+    return false
+  }
+}
+
+/**
+ * @description Get locations
+ * @param { Object } payload Array of id of dogs
+ * @returns { Object | Boolean } Returns a data with dogs or false
+ */
+export const getAdoption = async (payload) => {
+  try {
+    const conf = {...configuration}
+    conf.url = `/dogs/match`
+    conf.method = 'post'
+    conf.data = payload
+    const { data: { match } } = await axios(conf)
+    return match
+  } catch (error) {
+    getError(error?.response)
     return false
   }
 }
@@ -121,7 +152,10 @@ export const getLocations = async () => {
  * @param { Object } error WS error
  */
 const getError = (error) => {
+  if (!error) {
+    return
+  }
   if (error.status == 401) {
-    store.commit('logout')
+    store.commit('setLogout')
   }
 }

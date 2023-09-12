@@ -14,11 +14,12 @@
       :id="$props.id"
       :name="$props.id"
       :aria-labelledby="`aria-${$props.id}`"
-      :placeholder="$props.placeholder"
+      :placeholder="$t($props.placeholder)"
       :required="$props.required"
       :minlength="$props.minlength"
       :maxlength="$props.maxlength"
       @input="$emit('input', $event.target.value)"
+      :value="$props.value"
     />
     <!-- Message error -->
     <div class="input_string_error" v-if="error_msg">

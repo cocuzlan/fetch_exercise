@@ -3,6 +3,10 @@ export default {
   mixins: [],
   directives: {},
   props: {
+    headers: {
+      type: Array,
+      default: () => []
+    },
     data: {
       type: Array,
       default: () => []
@@ -14,11 +18,7 @@ export default {
   computed: {},
   watch: {},
   filters: {},
-  methods: {
-    transformTH(val) {
-      return val.replace('_', ' ')
-    }
-  },
+  methods: {},
   beforeCreate: function() {},
   created: function() {},
   beforeMount: function() {},

@@ -19,7 +19,12 @@
   "welcome": {
     "logout": "Logout",
     "select_name": "Dog Breeds",
-    "search": "Search"
+    "search": "Search",
+    "adopt": "adopt",
+    "form": {
+      "age_min": "Age minium",
+      "age_max": "Age maximun"
+    }
   },
   "components": {
     "string": {
@@ -31,6 +36,7 @@
     },
     "table": {
       "header": {
+        "adoption": "Adoption",
         "img": "Image",
         "name": "Name",
         "age": "Age",

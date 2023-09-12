@@ -19,7 +19,12 @@
   "welcome": {
     "logout": "Salir",
     "select_name": "Raza de perro",
-    "search": "Buscar"
+    "search": "Buscar",
+    "adopt": "Adoptar",
+    "form": {
+      "age_min": "Edad minima",
+      "age_max": "Edad máxima"
+    }
   },
   "components": {
     "string": {
@@ -31,6 +36,7 @@
     },
     "table": {
       "header": {
+        "adoption": "Adopción",
         "img": "Imagen",
         "name": "Nombre",
         "age": "Edad",

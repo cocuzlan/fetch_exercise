@@ -116,13 +116,20 @@ const store = new Vuex.Store({
         name,
         age,
         breed,
-        zip_code
+        zip_code,
+        id
       }) => ({
+        id,
+        adoption: false,
         img,
         name,
         age,
         breed,
-        location: payload.locations.find(el => el.zip_code === zip_code)
+        location: payload.locations.find(el => {
+          if (el) {
+            return el['zip_code'] == zip_code
+          }
+        })
       }))
     },
     /**

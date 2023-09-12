@@ -48,7 +48,11 @@ export default {
     length_msg: {
       type: String,
       default: 'components.string.msg_lenght'
-    }
+    },
+    value: {
+      type: [String, Boolean, Number],
+      default: ''
+    },
   },
   data: function() {
     return {
@@ -96,7 +100,7 @@ export default {
      * @returns A message error required
      */
     setRequired(value) {
-      if (!value) {
+      if (!value && this.$props.required) {
         return this.$props.required_msg
       }
     },

@@ -18,7 +18,7 @@
             id="name"
             :required="true"
             :minlength="'1'"
-            :maxlength="'20'"
+            :maxlength="'50'"
             placeholder=""
           />
         </div>
@@ -29,7 +29,7 @@
             id="email"
             :required="true"
             :minlength="'5'"
-            :maxlength="'20'"
+            :maxlength="'50'"
             :pattern="getRegexEmail"
             placeholder=""
           />
