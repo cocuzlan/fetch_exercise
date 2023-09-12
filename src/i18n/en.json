@@ -23,7 +23,8 @@
     "adopt": "adopt",
     "form": {
       "age_min": "Age minium",
-      "age_max": "Age maximun"
+      "age_max": "Age maximun",
+      "adopt_me": "Only one dog is possible to adopt by user.<br><b>Are you sure to adopt?</b>"
     }
   },
   "components": {
@@ -43,6 +44,11 @@
         "breed": "Breed",
         "location": "Location"
       }
+    },
+    "modal": {
+      "title": "Default",
+      "close": "Close",
+      "accept": "Accept"
     }
   }
 }

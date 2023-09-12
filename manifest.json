@@ -1,0 +1,10 @@
+{
+  "short_name": "Fetch Exercise",
+  "name": "Fetch Exercise",
+  "prefer_related_applications": false,
+  "start_url": "/",
+  "background_color": "#fff",
+  "display": "fullscreen",
+  "scope": "/",
+  "theme_color": "#ff"
+}

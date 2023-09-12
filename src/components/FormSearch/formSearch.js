@@ -1,15 +1,17 @@
 import ComponentSelect from '../select/ComponentSelect.vue'
 import ComponentString from '../string/ComponentString.vue'
 import ComponentTable from '../table/ComponentTable.vue'
+import ComponentModal from '../modal/ComponentModal.vue'
 import { getIdsDogs, getAdoption } from './../../api_service/api_service'
 import { getAge } from "../../regex/regex";
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {
     ComponentSelect,
     ComponentString,
-    ComponentTable
+    ComponentTable,
+    ComponentModal
   },
   mixins: [],
   directives: {},
@@ -25,10 +27,18 @@ export default {
         'breed',
         'location'
       ],
+      table_headers2: [
+        'img',
+        'name',
+        'age',
+        'breed',
+        'location'
+      ],
       dogs_breed: [],
       error: '',
       data_dogs: [],
-      dogs_adoption: []
+      dogs_adoption: [],
+      dog_adopt: []
     };
   },
   computed: {
@@ -37,11 +47,12 @@ export default {
   watch: {},
   filters: {},
   methods: {
+    ...mapMutations(['setCleanErrorField']),
     async getFormValues() {
       // Clear table
       this.data_dogs.length = 0
       // Check if select minium one breed
-      if (!this.dogs_breed.length && this.getErrorField) {
+      if (!this.dogs_breed.length || this.getErrorField) {
         this.setCleanErrorField()
         this.$refs['component_select'].error_msg = 'components.string.components'
         setTimeout(() => {
@@ -60,9 +71,13 @@ export default {
       }
       this.data_dogs = [...result]
     },
+    openModal(){
+      this.$refs['modal'].openModal()
+    },
     async adopteMe() {
       const res = await getAdoption(this.dogs_adoption)
-      console.log(res)
+      this.dog_adopt.push(this.data_dogs.find(el => el.id === res))
+      this.$refs['modal'].closeModal()
     }
   },
   beforeCreate: function() {},

@@ -45,5 +45,16 @@
         height: 1.5rem;
       }
     }
+
+    &_adopt {
+      padding: 2rem;
+    }
+  }
+
+  &_modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $fontsize-xxl;
   }
 }

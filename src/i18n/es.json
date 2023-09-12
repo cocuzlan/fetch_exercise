@@ -23,7 +23,8 @@
     "adopt": "Adoptar",
     "form": {
       "age_min": "Edad minima",
-      "age_max": "Edad máxima"
+      "age_max": "Edad máxima",
+      "adopt_me": "Solo 1 perro es posible de adoptar por usuario.<br><b>¿Esta seguro de continuar?</b>"
     }
   },
   "components": {
@@ -43,6 +44,11 @@
         "breed": "Raza",
         "location": "Ubicación"
       }
+    },
+    "modal": {
+      "title": "Default",
+      "close": "Cerrar",
+      "accept": "Aceptar"
     }
   }
 }
