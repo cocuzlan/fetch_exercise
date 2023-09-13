@@ -24,6 +24,8 @@
     "form": {
       "age_min": "Age minium",
       "age_max": "Age maximun",
+      "size": "Per Page",
+      "from": "Page",
       "adopt_me": "Only one dog is possible to adopt by user.<br><b>Are you sure to adopt?</b>"
     }
   },
@@ -49,6 +51,10 @@
       "title": "Default",
       "close": "Close",
       "accept": "Accept"
+    },
+    "pagination": {
+      "next": "Next",
+      "previous": "Previous"
     }
   }
 }

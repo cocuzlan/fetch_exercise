@@ -1,6 +1,7 @@
 import ComponentSelect from '../select/ComponentSelect.vue'
 import ComponentString from '../string/ComponentString.vue'
 import ComponentTable from '../table/ComponentTable.vue'
+import ComponentPagination from '../pagination/ComponentPagination.vue'
 import ComponentModal from '../modal/ComponentModal.vue'
 import { getIdsDogs, getAdoption } from './../../api_service/api_service'
 import { getAge } from "../../regex/regex";
@@ -11,6 +12,7 @@ export default {
     ComponentSelect,
     ComponentString,
     ComponentTable,
+    ComponentPagination,
     ComponentModal
   },
   mixins: [],
@@ -38,7 +40,10 @@ export default {
       error: '',
       data_dogs: [],
       dogs_adoption: [],
-      dog_adopt: []
+      dog_adopt: [],
+      size: 25,
+      total: 0,
+      keyPagination: 0
     };
   },
   computed: {
@@ -48,7 +53,8 @@ export default {
   filters: {},
   methods: {
     ...mapMutations(['setCleanErrorField']),
-    async getFormValues() {
+    async getFormValues(val=0) {
+      console.log(val)
       // Clear table
       this.data_dogs.length = 0
       // Check if select minium one breed
@@ -64,11 +70,14 @@ export default {
       const inputs = document.getElementById("form_search").elements
       const params = this.getData(inputs)
       params.breeds = this.dogs_breed
-      const result = await getIdsDogs(params)
+      params.from = val
+      console.log(params)
+      const { result, total } = await getIdsDogs(params)
       if (!result) {
         this.error = this.$i18n.t('login.form.error')
         return
       }
+      this.total = total
       this.data_dogs = [...result]
     },
     openModal(){
@@ -83,7 +92,9 @@ export default {
   beforeCreate: function() {},
   created: function() {},
   beforeMount: function() {},
-  mounted: function() {},
+  mounted: function() {
+    this.$refs['string'].input_value = this.size
+  },
   beforeUpdate: function() {},
   updated: function() {},
   activated: function() {},

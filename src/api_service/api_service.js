@@ -78,8 +78,12 @@ export const getIdsDogs = async (payload) => {
     conf.paramsSerializer = params => {
       return qs.stringify(params)
     }
-    const { data: { resultIds } } = await axios(conf)
-    return await getDogsSearch(resultIds)
+    const { data: { resultIds, total } } = await axios(conf)
+    const result = await getDogsSearch(resultIds)
+    return {
+      result,
+      total
+    }
   } catch (error) {
     getError(error?.response)
     return false

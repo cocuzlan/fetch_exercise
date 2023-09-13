@@ -34,12 +34,31 @@
           />
         </div>
         <div class="form-search_form_element">
+          <component-string
+            ref="string"
+            v-model="size"
+            id="size"
+            label=""
+            placeholder="welcome.form.size"
+            minlength="1"
+            maxlength="2"
+            :pattern="getAge"
+          />
         </div>
         <div class="form-search_form_element">
         </div>
         <div class="form-search_form_element">
         </div>
         <div class="form-search_form_element">
+        </div>
+        <div class="form-search_form_element pagination" v-if="data_dogs.length">
+            <!-- :key="keyPagination" -->
+          <component-pagination
+            :size="size"
+            :total="total"
+            @next-page="getFormValues"
+            @prev-page="getFormValues"
+          />
         </div>
       </div>
       <div class="form-search_button">

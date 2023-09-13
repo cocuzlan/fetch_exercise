@@ -24,6 +24,8 @@
     "form": {
       "age_min": "Edad minima",
       "age_max": "Edad máxima",
+      "size": "Per Page",
+      "from": "Page",
       "adopt_me": "Solo 1 perro es posible de adoptar por usuario.<br><b>¿Esta seguro de continuar?</b>"
     }
   },
@@ -49,6 +51,10 @@
       "title": "Default",
       "close": "Cerrar",
       "accept": "Aceptar"
+    },
+    "pagination": {
+      "next": "Siguiente",
+      "previous": "Previo"
     }
   }
 }
